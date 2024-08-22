@@ -45,3 +45,28 @@ let swiper2 = new Swiper("#press .inner",{
   }
 });
 
+//상품검색영역 스크립트(검색폼 나오고 들어가게)
+let search = document.getElementById("search");
+let open_btn = document.getElementsByClassName("open_search");
+  //배열로 만들어짐.
+let close_btn = document.querySelector(".close_search");
+
+//돋보기 버튼 클릭 시
+open_btn[0].addEventListener("click",function(e){
+  e.preventDefault(); //태그의 본래기능을 동작시키지 않음.(검색폼 누르고 닫을 때 상단으로 돌아가지 않음.)
+  search.classList.add("show");
+});
+
+//닫기 버튼 클릭 시
+close_btn.addEventListener("click",function(){
+  search.classList.remove("show");
+});
+
+//ESC키를 눌렀을 때
+window.addEventListener("keydown",function(e){
+  var state = search.classList.contains("show");
+  var esc = (e.key === "Escape"); //누른 키가 "ESC"키 맞는지 확인
+  if(state && esc){
+    search.classList.remove("show");
+  }
+});
